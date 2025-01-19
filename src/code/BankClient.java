@@ -49,7 +49,6 @@ public class BankClient extends Person
         name = new Name("Tiger", "Woods");
         c1 = new BankClient(name,dateOfBirth,null,signeUp,"123456");
         System.out.println(c1.getDetails());
-
     }
 
 
