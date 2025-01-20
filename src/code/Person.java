@@ -58,21 +58,4 @@ public class Person
     {
         return dateOfDeath == null;
     }
-
-    public static void main(final String[] args)
-    {
-        final Person p1;
-        final Name name;
-        Date dateOfDeath;
-        Date dateOfBirth;
-
-        name = new Name("Tiger","Woods");
-        dateOfDeath = new Date(1955,4,18);
-        dateOfBirth = new Date(1879,3,14);
-        p1 = new Person(name,dateOfBirth,null);
-
-        System.out.println(p1.getDetails());
-
-
-    }
 }

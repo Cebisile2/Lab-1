@@ -2,6 +2,8 @@ public class Name
 {
     private static final int MAX_FIRST_CHAR = 45;
     private static final int MAX_LAST_CHAR  = 45;
+    private static final int START_INDEX    = 0;
+    private static final int FIRST_CHAR     = 1;
 
     private final String firstName;
     private final String lastName;
@@ -13,6 +15,7 @@ public class Name
         {
             throw new NullPointerException("Invalid first name: null");
         }
+
         if(firstName.isBlank() || firstName.length() > MAX_FIRST_CHAR || firstName.toLowerCase().contains("admin"))
         {
             throw new IllegalArgumentException("Invalid first name: " + firstName);
@@ -22,6 +25,7 @@ public class Name
         {
             throw new NullPointerException("Invalid first name: null");
         }
+
         if(lastName.isBlank() || lastName.length() > MAX_LAST_CHAR || lastName.toLowerCase().contains("admin"))
         {
             throw new IllegalArgumentException("Invalid last name: " + lastName);
@@ -43,12 +47,13 @@ public class Name
 
     public String getInitials()
     {
-        return (firstName.charAt(0) + "." + lastName.charAt(0)).toUpperCase();
+        return (firstName.charAt(START_INDEX) + "." + lastName.charAt(START_INDEX)).toUpperCase();
     }
 
     public String getFullName()
     {
-        return firstName +" " + lastName;
+        return firstName.toLowerCase().charAt(START_INDEX) + firstName.substring(FIRST_CHAR).toLowerCase() + " " +
+                lastName.toLowerCase().charAt(START_INDEX) + lastName.substring(FIRST_CHAR).toLowerCase();
     }
 
     public String getReverseName()
@@ -58,8 +63,6 @@ public class Name
         rv = new StringBuilder(getFullName());
         rv.reverse();
         return rv.toString();
-
     }
-
 }
 

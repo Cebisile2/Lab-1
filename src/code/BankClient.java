@@ -1,5 +1,9 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class BankClient extends Person
 {
+    private static final List<Integer> validClientIDLen = Arrays.asList(6, 7);
     private final String clientID;
     private final Date signUpDate;
 
@@ -11,9 +15,10 @@ public class BankClient extends Person
     {
         super(name, dateBorn, dateDied);
 
-        if(clientID.length() != 6 && clientID.length() != 7)
+        if(!validClientIDLen.contains(clientID.length()))
         {
-            throw new IllegalArgumentException("Client Id should be 6 or 7 characters " + clientID);
+            throw new IllegalArgumentException(String.format("Client Id should be %d or %d characters: %s",
+                    validClientIDLen.getFirst(), validClientIDLen.getLast(), clientID));
         }
         this.signUpDate = signUpDate;
         this.clientID = clientID;
@@ -50,7 +55,4 @@ public class BankClient extends Person
         c1 = new BankClient(name,dateOfBirth,null,signeUp,"123456");
         System.out.println(c1.getDetails());
     }
-
-
-
 }
