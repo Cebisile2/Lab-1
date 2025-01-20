@@ -109,5 +109,10 @@ public class Name
         rv.reverse();
         return rv.toString();
     }
+
+    public static void main(final String[] args)
+    {
+
+    }
 }
 
