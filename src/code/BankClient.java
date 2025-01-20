@@ -1,12 +1,28 @@
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Represents a bank client, extending the Person class. Each client has a unique ID and a sign-up date.
+ * This class provides methods to retrieve client details and validate client data during initialization.
+ *
+ * @author Cebisile Masombuka
+ * @version 1.0
+ */
 public class BankClient extends Person
 {
     private static final List<Integer> validClientIDLen = Arrays.asList(6, 7);
     private final String clientID;
     private final Date signUpDate;
 
+    /**
+     * Constructs a BankClient object with the specified name, date of birth, date of death, sign-up date, and client ID.
+     *
+     * @param name      the name of the client.
+     * @param dateBorn  the date of birth of the client.
+     * @param dateDied  the date of death of the client.
+     * @param signUpDate the date when the client signed up with the bank.
+     * @param clientID  the unique identifier for the client.
+     */
     public BankClient(final Name name,
                       final Date dateBorn,
                       final Date dateDied,
@@ -24,11 +40,22 @@ public class BankClient extends Person
         this.clientID = clientID;
     }
 
+    /**
+     * Retrieves the date when the client signed up with the bank.
+     *
+     * @return the sign-up date of the client.
+     */
     public Date getSignUpDate()
     {
         return signUpDate;
     }
 
+    /**
+     * Retrieves the detailed information of the bank client.
+     * Includes the client's name, ID, and the day of the week, month, and year they signed up.
+     *
+     * @return a string representing the client's details.
+     */
     @Override
     public String getDetails()
     {
@@ -36,23 +63,5 @@ public class BankClient extends Person
                 "joined the bank on " + this.signUpDate.getDayOfWeek().toLowerCase()+
                 "," + this.signUpDate.getMonth() + " " + this.signUpDate.getDay() +
                 "," + this.signUpDate.getYear();
-    }
-
-    public static void main(final String[] args)
-    {
-        final BankClient c1;
-        final Name name;
-        final Date date;
-        final Date dateOfBirth;
-        final Date dateOfDeath;
-        final Date signeUp;
-
-        signeUp = new Date(2020,9,3);
-        dateOfDeath = new Date(1955,4,1955);
-        dateOfBirth = new Date(1879,3,14);
-        date = new Date(1990,1,1);
-        name = new Name("Tiger", "Woods");
-        c1 = new BankClient(name,dateOfBirth,null,signeUp,"123456");
-        System.out.println(c1.getDetails());
     }
 }

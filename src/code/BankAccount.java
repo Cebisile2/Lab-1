@@ -40,10 +40,12 @@ public class BankAccount
     {
         return accountNumber;
     }
+
     public void deposit()
     {
 
     }
+    
     public void withdraw(final double amountUsd)
     {
         if(amountUsd > balanceUsd)
@@ -51,7 +53,7 @@ public class BankAccount
             throw new IllegalArgumentException("Insufficient funds. Balance Available: " + balanceUsd);
         }
 
-        balanceUsd -+ amountUsd;
+        balanceUsd -= amountUsd;
     }
 
     public void withdraw(final double amountUsd, final int pinToMatch)
@@ -60,7 +62,7 @@ public class BankAccount
         {
             throw new IllegalArgumentException("Invalid pin entered. ABORTING!");
         }
-
+        balanceUsd -= amountUsd;
 
     }
 
